@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>學生資料管理系統-修改資料一(GET)</title>
+<style>
+    h1, h3{
+        text-align: center;
+    }
+    table{
+        margin-left: auto;
+        margin-right: auto;  
+    }
+    table, th, td{
+        border:1px solid black;
+    }
+</style>
+{% endblock title %}
+
+{% block content %}
+<h1>學生資料管理系統-修改資料一(GET)</h1>
+<a href="/index/"><h3>回首頁</h3></a>
+<form action="/edit1/{{dict_data.id}}/edit/" method="get">
+    <table>
+        <tr>
+            <th>姓名</th><td><input type="text" id="cName" name="cName" value="{{ dict_data.cName }}"></td>
+        </tr>
+        <tr>
+            <th>性別</th>
+            <td>
+                <input type="radio" id="cSex" name="cSex" value="M" {% if dict_data.cSex == "M"%} checked {% endif %} >男
+                <input type="radio" id="cSex" name="cSex" value="F" {% if dict_data.cSex == "F"%} checked {% endif %} >女 
+                {% comment %} {% if dict_data.cSex == "M"%}
+                <input type="radio" id="cSex" name="cSex" value="M" checked>男
+                <input type="radio" id="cSex" name="cSex" value="F">女
+
+                {% else %}
+                <input type="radio" id="cSex" name="cSex" value="M" >男
+                <input type="radio" id="cSex" name="cSex" value="F" checked>女
+                {% endif %} {% endcomment %}
+            </td>
+        </tr>
+        <tr>
+            <th>生日</th><td><input type="date" id="cBirthday" name="cBirthday" value="{{ dict_data.cBirthday|date:'Y-m-d' }}"></td>
+        </tr>
+        <tr>
+            <th>信箱</th><td><input type="text" id="cEmail" name="cEmail" value="{{ dict_data.cEmail }}"></td>
+        </tr>
+        <tr>
+            <th>電話</th><td><input type="text" id="cPhone" name="cPhone" value="{{ dict_data.cPhone }}"></td>
+        </tr>
+        <tr>
+            <th>地址</th><td><input type="text" id="cAddr" name="cAddr" value="{{ dict_data.cAddr }}"></td>
+        </tr>
+        <tr>
+            <th colspan="2" style="text-align:center;">
+                <input type="submit" name="button" id="button" value="儲存">
+                <input type="reset" name="button2" id="button2" value="重設">
+            </th>
+        </tr>
+    </table>
+</form>
+
+
+
+{% endblock content %}
